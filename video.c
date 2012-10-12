@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <stdbool.h>
 #include <string.h>
-//This file will contains all the functions for getting a video thread and getting it on the screen
+//This file will contain all the functions for getting a video thread and getting it on the screen
 //Yes I know that that is dangerous
 //example thread for example function
 SDL_Thread *example;
