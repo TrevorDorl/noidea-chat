@@ -63,4 +63,3 @@ int evilThreads(char *string, int counter, bool stopper)
 
 
 
-
