@@ -1,11 +1,15 @@
-iCFLAGS=-W -Wall -pedantic -std=c99
+CFLAGS=-W -Wall -pedantic -std=c99
+SDLFLAGS=`sdl-config --libs --cflags`
+LIBAVFLAGS=`pkg-config --libs libavformat libavcodec libswscale libavutil libavdevice` -lm
+
 
 all:
-	gcc -c ./ui/ui.c -o ./objects/ui.o ${CFLAGS} `sdl-config --libs --cflags`
-	gcc -c ./main/main.c `sdl-config --libs --cflags` -o ./objects/main.o ${CFLAGS}
-	gcc ./objects/main.o ./objects/ui.o ${CFLAGS} -o chat `sdl-config --libs --cflags`
+	gcc -c ./ui/ui.c -o ./objects/ui.o ${CFLAGS} ${SDLFLAGS}
+	gcc -c ./main/main.c -o ./objects/main.o ${CFLAGS} ${SDLFLAGS}
+	gcc -c ./WeMic/WeMic.c -o ./objects/WeMic.o ${CFLAGS} ${SDLFLAGS} ${LIBAVFLAGS}
+	gcc ./objects/* -o ./noidea-chat ${CFLAGS} ${SDLFLAGS} ${LIBAVFLAGS}
 
 clean:
-	rm chat
+	rm noidea-chat
 	rm objects/*
 	
